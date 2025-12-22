@@ -47,14 +47,14 @@ export default function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="w-[15rem] bg-white border-r border-gray-200 h-screen flex flex-col">
+    <aside className="w-[15rem] bg-white border-r border-gray-200 h-screen flex flex-col px-4">
       {/* Logo */}
-      <article className="px-7 py-2 my-3 border-red-500 flex items-center gap-3">
+      <article className="px-3 py-2 my-3 border-red-500 flex items-center gap-3">
         <img src="/flowva_logo.png" alt="flowva-logo    " />
       </article>
 
       {/* Navigation */}
-      <nav className="flex-1 px-4 mt-2">
+      <nav className="flex-1 mt-2">
         <ul className="space-y-2">
           {navigationItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -64,11 +64,11 @@ export default function Sidebar() {
                 <Link
                   to={item.path}
                   className={`
-                    flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors group
+                    flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors duration-300 group
                     ${
                       isActive
-                        ? "bg-purple-100 text-purple-700"
-                        : "text-gray-700 hover:bg-gray-100 hover:text-purple-600"
+                        ? "bg-primary-purple text-secondary-purple"
+                        : "text-black hover:bg-secondary-purple hover:bg-opacity-10 hover:text-purple-600"
                     }
                   `}
                 >
@@ -86,7 +86,7 @@ export default function Sidebar() {
       </nav>
 
       {/* User Profile */}
-      <article className="p-4 border-t border-gray-200">
+      <article className="py-4 border-t border-black">
         <div className="flex items-center gap-3">
           <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-semibold text-gray-700">
             A
@@ -96,7 +96,7 @@ export default function Sidebar() {
               Abdulkareem
             </p>
             <p className="text-xs text-gray-500 truncate">
-              olamide...@gmail.com
+              olamideiyanda18@gmai...
             </p>
           </div>
         </div>
