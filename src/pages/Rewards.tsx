@@ -5,24 +5,24 @@ export default function Rewards() {
   const [activeTab, setActiveTab] = useState<"earn" | "redeem">("earn");
 
   return (
-    <section className="min-h-screen p-8 bg-primary-white">
+    <section className="min-h-screen bg-primary-white p-8">
       {/* Header */}
-      <article className="border-red-500 mb-5">
-        <div className="max-w-7xl mx-auto">
+      <article className="mb-5 border-red-500">
+        <div className="mx-auto max-w-7xl">
           <article className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-medium">Rewards Hub</h1>
-              <p className="text-gray-600 font-medium mt-2">
+              <p className="mt-2 font-medium text-gray-600">
                 Earn points, unlock rewards, and celebrate your progress!
               </p>
             </div>
-            <button className="flex items-center justify-center p-3 bg-primary-gray hover:bg-secondary-gray group rounded-full transition-colors">
+            <button className="group flex items-center justify-center rounded-full bg-primary-gray p-3 transition-colors hover:bg-secondary-gray">
               <svg
                 aria-hidden="true"
                 focusable="false"
                 data-prefix="fas"
                 data-icon="bell"
-                className="w-4 h-4 text-[#2D3748] group-hover:text-secondary-purple group-hover:rotate-[10deg] group-hover:scale-110 transition-all duration-200"
+                className="h-4 w-4 text-[#2D3748] transition-all duration-200 group-hover:rotate-[10deg] group-hover:scale-110 group-hover:text-secondary-purple"
                 role="img"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 448 512"
@@ -36,12 +36,12 @@ export default function Rewards() {
           </article>
 
           {/* Tabs */}
-          <article className="flex gap-8 mt-6 mb-7">
+          <article className="mb-7 mt-6 flex gap-8">
             <button
               onClick={() => setActiveTab("earn")}
-              className={`p-3 font-medium transition-colors relative ${
+              className={`relative p-3 font-medium transition-colors ${
                 activeTab === "earn"
-                  ? "text-purple-600 border-b-[3px] bg-tertiary-purple border-secondary-purple rounded-t-lg"
+                  ? "rounded-t-lg border-b-[3px] border-secondary-purple bg-tertiary-purple text-purple-600"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -49,9 +49,9 @@ export default function Rewards() {
             </button>
             <button
               onClick={() => setActiveTab("redeem")}
-              className={`p-3 font-medium transition-colors relative ${
+              className={`relative p-3 font-medium transition-colors ${
                 activeTab === "redeem"
-                  ? "text-purple-600 border-b-[3px] bg-tertiary-purple border-secondary-purple rounded-t-lg"
+                  ? "rounded-t-lg border-b-[3px] border-secondary-purple bg-tertiary-purple text-purple-600"
                   : "text-gray-600 hover:text-gray-900"
               }`}
             >
@@ -62,12 +62,12 @@ export default function Rewards() {
       </article>
 
       {/* Content */}
-      <article className="max-w-7xl mx-auto">
+      <article className="mx-auto max-w-7xl">
         {activeTab === "earn" ? (
           <>
             {/* Your Rewards Journey */}
             <div className="mb-8">
-              <article className="border-l-4 border-purple-600 pl-4 mb-6">
+              <article className="mb-6 border-l-4 border-purple-600 pl-4">
                 <h2 className="text-2xl font-bold text-black">
                   Your Rewards Journey
                 </h2>
@@ -78,19 +78,19 @@ export default function Rewards() {
 
             {/* Earn More Points */}
             <div>
-              <div className="border-l-4 border-purple-600 pl-4 mb-6">
+              <div className="mb-6 border-l-4 border-purple-600 pl-4">
                 <h2 className="text-2xl font-bold text-gray-900">
                   Earn More Points
                 </h2>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
                 {/* Refer and Win */}
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-purple-100 rounded-xl">
+                    <div className="rounded-xl bg-purple-100 p-3">
                       <svg
-                        className="w-6 h-6 text-purple-600"
+                        className="h-6 w-6 text-purple-600"
                         fill="currentColor"
                         viewBox="0 0 24 24"
                       >
@@ -98,10 +98,10 @@ export default function Rewards() {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="mb-2 text-lg font-semibold text-gray-900">
                         Refer and win 10,000 points!
                       </h3>
-                      <p className="text-sm text-gray-600 mb-4 leading-relaxed">
+                      <p className="mb-4 text-sm leading-relaxed text-gray-600">
                         Invite 3 friends by Nov 20 and earn a chance to be one
                         of 5 winners of{" "}
                         <span className="font-semibold text-purple-600">
@@ -109,10 +109,10 @@ export default function Rewards() {
                         </span>
                         . Friends must complete onboarding to qualify.
                       </p>
-                      <button className="text-purple-600 font-medium text-sm hover:text-purple-700 flex items-center gap-1">
+                      <button className="flex items-center gap-1 text-sm font-medium text-purple-600 hover:text-purple-700">
                         Learn more
                         <svg
-                          className="w-4 h-4"
+                          className="h-4 w-4"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -130,11 +130,11 @@ export default function Rewards() {
                 </div>
 
                 {/* Share Your Stack */}
-                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-blue-100 rounded-xl">
+                    <div className="rounded-xl bg-blue-100 p-3">
                       <svg
-                        className="w-6 h-6 text-blue-600"
+                        className="h-6 w-6 text-blue-600"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -148,7 +148,7 @@ export default function Rewards() {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center justify-between mb-2">
+                      <div className="mb-2 flex items-center justify-between">
                         <h3 className="text-lg font-semibold text-gray-900">
                           Share Your Stack
                         </h3>
@@ -156,12 +156,12 @@ export default function Rewards() {
                           Earn +25 pts
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 mb-4">
+                      <p className="mb-4 text-sm text-gray-600">
                         Share your tool stack
                       </p>
-                      <button className="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-lg font-medium text-sm hover:bg-gray-50 flex items-center gap-2">
+                      <button className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
                         <svg
-                          className="w-4 h-4 text-purple-600"
+                          className="h-4 w-4 text-purple-600"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -182,10 +182,10 @@ export default function Rewards() {
             </div>
           </>
         ) : (
-          <div className="bg-white rounded-xl p-12 text-center border border-gray-200">
-            <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="rounded-xl border border-gray-200 bg-white p-12 text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
               <svg
-                className="w-8 h-8 text-gray-400"
+                className="h-8 w-8 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -198,7 +198,7 @@ export default function Rewards() {
                 />
               </svg>
             </div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="mb-2 text-xl font-semibold text-gray-900">
               Redeem Rewards Coming Soon
             </h3>
             <p className="text-gray-600">
