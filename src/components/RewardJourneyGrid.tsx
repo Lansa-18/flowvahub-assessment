@@ -4,10 +4,10 @@ import CoinIcon from "./icons/CoinIcon";
 
 export default function RewardJourneyGrid() {
   return (
-    <article className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+    <article className="tab-land:gap-4 land-phone:grid-cols-1 grid grid-cols-3 gap-6">
       {/* Points Balance */}
       <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
-        <div className="mb-4 flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
+        <div className="flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
           <svg
             aria-hidden="true"
             focusable="false"
@@ -26,16 +26,20 @@ export default function RewardJourneyGrid() {
           <h3 className="text-lg font-bold text-gray-900">Points Balance</h3>
         </div>
 
-        <article className="mt-6 px-4">
+        <article className="p-4">
           <div className="mb-4 flex items-center justify-between">
             <h2 className="text-5xl font-bold text-secondary-purple">10</h2>
             <CoinIcon size={96} className="border-red-500" />
           </div>
 
           <div className="mb-2">
-            <div className="mb-2 flex justify-between text-sm">
-              <span className="text-gray-600">Progress to $5 Gift Card</span>
-              <span className="font-medium text-gray-900">5/5000</span>
+            <div className="mb-2 flex items-center justify-between text-sm">
+              <span className="custom-850:text-xs text-gray-600">
+                Progress to $5 Gift Card
+              </span>
+              <span className="custom-850:text-xs font-medium text-gray-900">
+                5/5000
+              </span>
             </div>
             <div className="h-2 overflow-hidden rounded-full bg-gray-200">
               <div
@@ -45,7 +49,7 @@ export default function RewardJourneyGrid() {
             </div>
           </div>
 
-          <p className="flex items-center gap-1.5 text-sm text-gray-600">
+          <p className="custom-850:text-xs flex items-center gap-1.5 text-sm text-gray-600">
             🚀 Just getting started — keep earning points!
           </p>
         </article>
@@ -53,7 +57,7 @@ export default function RewardJourneyGrid() {
 
       {/* Daily Streak */}
       <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
-        <div className="mb-4 flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
+        <div className="flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
           <svg
             aria-hidden="true"
             focusable="false"
@@ -72,7 +76,7 @@ export default function RewardJourneyGrid() {
           <h3 className="text-lg font-bold text-gray-900">Daily Streak </h3>
         </div>
 
-        <article className="mt-6 px-4">
+        <article className="land-phone:mt-4 mt-6 p-4">
           <h2 className="mb-2 text-4xl font-extrabold text-secondary-purple">
             2 days
           </h2>
@@ -156,10 +160,10 @@ export default function RewardJourneyGrid() {
             </div>
 
             <div>
-              <h4 className="mb-1 font-bold">
+              <h4 className="custom-850:text-sm mb-1 font-bold">
                 Automate and Optimize Your Schedule
               </h4>
-              <p className="text-sm text-gray-700">
+              <p className="custom-850:text-xs text-sm text-gray-700">
                 Reclaim.ai is an AI-powered calendar assistant that
                 automatically schedules your tasks, meetings, and breaks to
                 boost productivity. Free to try — earn Flowva Points when you
@@ -168,31 +172,34 @@ export default function RewardJourneyGrid() {
             </div>
           </article>
 
-          <div className="mt-4 flex items-center justify-between">
-            <Button
-              variant="ghost"
-              className="rounded-full !bg-secondary-purple !text-white hover:!bg-secondary-purple/90"
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="user-plus"
-                className="svg-inline--fa fa-user-plus"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 640 512"
+          <div className="tab-land:flex-col land-phone:flex-row tab-land:gap-3 mt-4 flex items-center justify-between">
+            <a target="blank" href="https://reclaim.ai/?utm_campaign=partnerstack&utm_term=ps_16ee8d9da128&pscd=go.reclaim.ai&ps_partner_key=MTZlZThkOWRhMTI4&ps_xid=XqYacp5z3a5hwi&gsxid=XqYacp5z3a5hwi&gspk=MTZlZThkOWRhMTI4">
+              <Button
+                variant="ghost"
+                className="tab-land:w-full rounded-full !bg-secondary-purple !text-white hover:!bg-secondary-purple/90"
               >
-                <path
-                  fill="currentColor"
-                  d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
-                ></path>
-              </svg>
-              Sign Up
-            </Button>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="user-plus"
+                  className="svg-inline--fa fa-user-plus"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 640 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304l91.4 0C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7L29.7 512C13.3 512 0 498.7 0 482.3zM504 312l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+                  ></path>
+                </svg>
+                Sign Up
+              </Button>
+            </a>
+
             <Button
               variant="ghost"
-              className="rounded-full !bg-purple-red-gradient !text-white"
+              className="tab-land:w-full rounded-full !bg-purple-red-gradient !text-white"
             >
               <svg
                 aria-hidden="true"

@@ -7,7 +7,7 @@ export default function EarnSection() {
     <div className="mb-6 border-red-500">
       <SectionTag title="Earn More Points" />
 
-      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+      <div className="grid grid-cols-3 land-phone:grid-cols-1 gap-4">
         {/* Refer and Win */}
         <ReferBlock type="win">
           {/* BOTTOM */}

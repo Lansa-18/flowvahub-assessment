@@ -63,7 +63,7 @@ export default function Sidebar() {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors duration-300 ${
+                  className={`group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors duration-300 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-purple ${
                     isActive
                       ? "bg-primary-purple text-secondary-purple"
                       : "text-black hover:bg-secondary-purple hover:bg-opacity-10 hover:text-purple-600"

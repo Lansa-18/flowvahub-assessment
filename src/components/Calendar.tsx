@@ -2,7 +2,7 @@ export default function Calendar() {
   const daysOfTheWeek = ["M", "T", "W", "T", "F", "S", "S"];
 
   return (
-    <div className="my-4 flex justify-between space-x-2">
+    <div className="my-4 flex justify-between items-center land-phone:justify-center space-x-2">
       {daysOfTheWeek.map((day, index) => (
         <div
           className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-semibold transition-all duration-200 ${

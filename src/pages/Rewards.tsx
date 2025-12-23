@@ -2,9 +2,16 @@ import { useState } from "react";
 import RewardSection from "@/components/RewardSection";
 import EarnSection from "@/components/EarnSection";
 import ReferSection from "@/components/ReferSection";
+import HamburgerIcon from "@/components/icons/HamburgerIcon";
+import { useNavModalProvider } from "@/context/NavModalContext";
 
 export default function Rewards() {
   const [activeTab, setActiveTab] = useState<"earn" | "redeem">("earn");
+  const { setIsOpen } = useNavModalProvider();
+
+  const handleToggleNa1vModal = () => {
+    setIsOpen((prev) => !prev);
+  };
 
   return (
     <section className="min-h-screen bg-primary-white">
@@ -13,7 +20,17 @@ export default function Rewards() {
         <div className="mx-auto max-w-7xl">
           <article className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-medium">Rewards Hub</h1>
+              <h1 className="flex items-center gap-2 text-2xl font-medium">
+                <button
+                  onClick={handleToggleNa1vModal}
+                  type="button"
+                  aria-label="Hamburger menu"
+                  className="custom-1050:block hidden"
+                >
+                  <HamburgerIcon />
+                </button>
+                Rewards Hub
+              </h1>
               <p className="mt-2 font-medium text-gray-600">
                 Earn points, unlock rewards, and celebrate your progress!
               </p>
@@ -45,7 +62,7 @@ export default function Rewards() {
         <article className="mb-7 mt-6 flex gap-3">
           <button
             onClick={() => setActiveTab("earn")}
-            className={`relative rounded-t-lg p-3 font-medium transition-colors ${
+            className={`relative rounded-t-lg p-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-purple ${
               activeTab === "earn"
                 ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
                 : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
@@ -55,7 +72,7 @@ export default function Rewards() {
           </button>
           <button
             onClick={() => setActiveTab("redeem")}
-            className={`relative rounded-t-lg p-3 font-medium transition-colors ${
+            className={`relative rounded-t-lg p-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-purple ${
               activeTab === "redeem"
                 ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
                 : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
