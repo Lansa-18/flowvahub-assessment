@@ -1,12 +1,12 @@
 import Calendar from "./Calendar";
 import { Button } from "./ui/button";
-import CoinIcon from "./ui/CoinIcon";
+import CoinIcon from "./icons/CoinIcon";
 
 export default function RewardJourneyGrid() {
   return (
     <article className="grid grid-cols-1 gap-6 lg:grid-cols-3">
       {/* Points Balance */}
-      <div className="rounded-2xl bg-white shadow-sm transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
+      <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
         <div className="mb-4 flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
           <svg
             aria-hidden="true"
@@ -52,7 +52,7 @@ export default function RewardJourneyGrid() {
       </div>
 
       {/* Daily Streak */}
-      <div className="rounded-2xl bg-white shadow-sm transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
+      <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
         <div className="mb-4 flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
           <svg
             aria-hidden="true"
@@ -108,9 +108,9 @@ export default function RewardJourneyGrid() {
       </div>
 
       {/* Featured Tool Spotlight */}
-      <div className="rounded-2xl bg-white shadow-sm transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
+      <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
         {/* TOP */}
-        <article className="bg-purple-blue-gradient rounded-t-2xl p-4">
+        <article className="rounded-t-2xl bg-purple-blue-gradient p-4">
           <article className="flex items-center justify-between">
             <div className="space-y-4 text-white">
               <span className="rounded-full bg-white/20 px-3 py-1 text-center text-xs font-bold backdrop-blur-sm">
@@ -192,7 +192,7 @@ export default function RewardJourneyGrid() {
             </Button>
             <Button
               variant="ghost"
-              className="rounded-full !bg-purple-red-gradient !text-white "
+              className="rounded-full !bg-purple-red-gradient !text-white"
             >
               <svg
                 aria-hidden="true"

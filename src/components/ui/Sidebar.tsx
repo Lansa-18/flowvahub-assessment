@@ -12,7 +12,7 @@ const Icon = ({
 }) => {
   return (
     <div
-      className={`w-5 h-5 ${className}`}
+      className={`h-5 w-5 ${className}`}
       aria-label={alt}
       style={{
         WebkitMaskImage: `url(${src})`,
@@ -47,14 +47,14 @@ export default function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="w-[15rem] bg-white border-r border-gray-200 h-screen flex flex-col px-4">
+    <aside className="flex h-screen w-[15rem] flex-col border-r border-gray-200 bg-white px-4">
       {/* Logo */}
-      <article className="px-3 py-2 my-3 border-red-500 flex items-center gap-3">
-        <img src="/flowva_logo.png" alt="flowva-logo    " />
+      <article className="my-3 flex items-center gap-3 border-red-500 px-3 py-2">
+        <img src="/flowva_logo.png" className="h-[60px]" alt="flowva-logo" />
       </article>
 
       {/* Navigation */}
-      <nav className="flex-1 mt-2">
+      <nav className="mt-2 flex-1">
         <ul className="space-y-2">
           {navigationItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -63,19 +63,16 @@ export default function Sidebar() {
               <li key={item.path}>
                 <Link
                   to={item.path}
-                  className={`
-                    flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors duration-300 group
-                    ${
-                      isActive
-                        ? "bg-primary-purple text-secondary-purple"
-                        : "text-black hover:bg-secondary-purple hover:bg-opacity-10 hover:text-purple-600"
-                    }
-                  `}
+                  className={`group flex items-center gap-3 rounded-lg px-4 py-2.5 transition-colors duration-300 ${
+                    isActive
+                      ? "bg-primary-purple text-secondary-purple"
+                      : "text-black hover:bg-secondary-purple hover:bg-opacity-10 hover:text-purple-600"
+                  } `}
                 >
                   <Icon
                     src={item.icon}
                     alt={item.name}
-                    className="transition-colors w-4 h-4"
+                    className="h-4 w-4 transition-colors"
                   />
                   <span className="tracking-wide">{item.name}</span>
                 </Link>
@@ -86,16 +83,16 @@ export default function Sidebar() {
       </nav>
 
       {/* User Profile */}
-      <article className="py-4 border-t border-black">
+      <article className="border-t border-black py-4">
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center text-sm font-semibold text-gray-700">
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-300 text-sm font-semibold text-gray-700">
             A
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-gray-900 truncate">
+          <div className="min-w-0 flex-1">
+            <p className="truncate text-sm font-medium text-gray-900">
               Abdulkareem
             </p>
-            <p className="text-xs text-gray-500 truncate">
+            <p className="truncate text-xs text-gray-500">
               olamideiyanda18@gmai...
             </p>
           </div>

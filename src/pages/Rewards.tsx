@@ -1,13 +1,15 @@
 import { useState } from "react";
-import RewardJourneyGrid from "../components/RewardJourneyGrid";
+import RewardSection from "@/components/RewardSection";
+import EarnSection from "@/components/EarnSection";
+import ReferSection from "@/components/ReferSection";
 
 export default function Rewards() {
   const [activeTab, setActiveTab] = useState<"earn" | "redeem">("earn");
 
   return (
-    <section className="min-h-screen bg-primary-white p-8">
+    <section className="min-h-screen bg-primary-white">
       {/* Header */}
-      <article className="mb-5 border-red-500">
+      <article className="sticky top-0 z-10 border-red-500 bg-primary-white px-8 pb-4 pt-8">
         <div className="mx-auto max-w-7xl">
           <article className="flex items-center justify-between">
             <div>
@@ -34,152 +36,45 @@ export default function Rewards() {
               </svg>
             </button>
           </article>
-
-          {/* Tabs */}
-          <article className="mb-7 mt-6 flex gap-8">
-            <button
-              onClick={() => setActiveTab("earn")}
-              className={`relative p-3 font-medium transition-colors ${
-                activeTab === "earn"
-                  ? "rounded-t-lg border-b-[3px] border-secondary-purple bg-tertiary-purple text-purple-600"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Earn Points
-            </button>
-            <button
-              onClick={() => setActiveTab("redeem")}
-              className={`relative p-3 font-medium transition-colors ${
-                activeTab === "redeem"
-                  ? "rounded-t-lg border-b-[3px] border-secondary-purple bg-tertiary-purple text-purple-600"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Redeem Rewards
-            </button>
-          </article>
         </div>
       </article>
 
       {/* Content */}
-      <article className="mx-auto max-w-7xl">
+      <article className="mx-auto max-w-7xl border-blue-500 px-8 pb-8">
+        {/* Tabs */}
+        <article className="mb-7 mt-6 flex gap-3">
+          <button
+            onClick={() => setActiveTab("earn")}
+            className={`relative rounded-t-lg p-3 font-medium transition-colors ${
+              activeTab === "earn"
+                ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
+                : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
+            }`}
+          >
+            Earn Points
+          </button>
+          <button
+            onClick={() => setActiveTab("redeem")}
+            className={`relative rounded-t-lg p-3 font-medium transition-colors ${
+              activeTab === "redeem"
+                ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
+                : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
+            }`}
+          >
+            Redeem Rewards
+          </button>
+        </article>
+
         {activeTab === "earn" ? (
           <>
             {/* Your Rewards Journey */}
-            <div className="mb-8">
-              <article className="mb-6 border-l-4 border-purple-600 pl-4">
-                <h2 className="text-2xl font-bold text-black">
-                  Your Rewards Journey
-                </h2>
-              </article>
-
-              <RewardJourneyGrid />
-            </div>
+            <RewardSection />
 
             {/* Earn More Points */}
-            <div>
-              <div className="mb-6 border-l-4 border-purple-600 pl-4">
-                <h2 className="text-2xl font-bold text-gray-900">
-                  Earn More Points
-                </h2>
-              </div>
+            <EarnSection />
 
-              <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-                {/* Refer and Win */}
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-purple-100 p-3">
-                      <svg
-                        className="h-6 w-6 text-purple-600"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <h3 className="mb-2 text-lg font-semibold text-gray-900">
-                        Refer and win 10,000 points!
-                      </h3>
-                      <p className="mb-4 text-sm leading-relaxed text-gray-600">
-                        Invite 3 friends by Nov 20 and earn a chance to be one
-                        of 5 winners of{" "}
-                        <span className="font-semibold text-purple-600">
-                          10,000 points
-                        </span>
-                        . Friends must complete onboarding to qualify.
-                      </p>
-                      <button className="flex items-center gap-1 text-sm font-medium text-purple-600 hover:text-purple-700">
-                        Learn more
-                        <svg
-                          className="h-4 w-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Share Your Stack */}
-                <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
-                  <div className="flex items-start gap-4">
-                    <div className="rounded-xl bg-blue-100 p-3">
-                      <svg
-                        className="h-6 w-6 text-blue-600"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                        />
-                      </svg>
-                    </div>
-                    <div className="flex-1">
-                      <div className="mb-2 flex items-center justify-between">
-                        <h3 className="text-lg font-semibold text-gray-900">
-                          Share Your Stack
-                        </h3>
-                        <span className="text-sm text-gray-600">
-                          Earn +25 pts
-                        </span>
-                      </div>
-                      <p className="mb-4 text-sm text-gray-600">
-                        Share your tool stack
-                      </p>
-                      <button className="flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        <svg
-                          className="h-4 w-4 text-purple-600"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"
-                          />
-                        </svg>
-                        Share
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Refer & Earn */}
+            <ReferSection />
           </>
         ) : (
           <div className="rounded-xl border border-gray-200 bg-white p-12 text-center">
