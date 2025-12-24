@@ -1,10 +1,13 @@
 import Calendar from "./Calendar";
 import { Button } from "./ui/button";
 import CoinIcon from "./icons/CoinIcon";
+import GiftIcon from "./icons/GiftIcon";
+import { ClaimModal } from "./ClaimModal";
+// import LevelUpModal from "./LevelUpModal";
 
 export default function RewardJourneyGrid() {
   return (
-    <article className="tab-land:gap-4 land-phone:grid-cols-1 grid grid-cols-3 gap-6">
+    <article className="grid grid-cols-3 gap-6 tab-land:gap-4 land-phone:grid-cols-1">
       {/* Points Balance */}
       <div className="rounded-2xl bg-white shadow-[0_5px_15px_rgba(0,0,0,0.05)] transition-all duration-200 hover:-translate-y-[5px] hover:shadow-lg">
         <div className="flex items-center gap-2 rounded-t-2xl bg-primary-blue p-4">
@@ -34,10 +37,10 @@ export default function RewardJourneyGrid() {
 
           <div className="mb-2">
             <div className="mb-2 flex items-center justify-between text-sm">
-              <span className="custom-850:text-xs text-gray-600">
+              <span className="text-gray-600 custom-850:text-xs">
                 Progress to $5 Gift Card
               </span>
-              <span className="custom-850:text-xs font-medium text-gray-900">
+              <span className="font-medium text-gray-900 custom-850:text-xs">
                 5/5000
               </span>
             </div>
@@ -49,7 +52,7 @@ export default function RewardJourneyGrid() {
             </div>
           </div>
 
-          <p className="custom-850:text-xs flex items-center gap-1.5 text-sm text-gray-600">
+          <p className="flex items-center gap-1.5 text-sm text-gray-600 custom-850:text-xs">
             🚀 Just getting started — keep earning points!
           </p>
         </article>
@@ -76,7 +79,7 @@ export default function RewardJourneyGrid() {
           <h3 className="text-lg font-bold text-gray-900">Daily Streak </h3>
         </div>
 
-        <article className="land-phone:mt-4 mt-6 p-4">
+        <article className="mt-6 p-4 land-phone:mt-4">
           <h2 className="mb-2 text-4xl font-extrabold text-secondary-purple">
             2 days
           </h2>
@@ -99,9 +102,9 @@ export default function RewardJourneyGrid() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
               className="lucide lucide-zap h-5 w-5"
             >
               <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"></path>
@@ -147,9 +150,9 @@ export default function RewardJourneyGrid() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="lucide lucide-calendar"
               >
                 <path d="M8 2v4"></path>
@@ -160,10 +163,10 @@ export default function RewardJourneyGrid() {
             </div>
 
             <div>
-              <h4 className="custom-850:text-sm mb-1 font-bold">
+              <h4 className="mb-1 font-bold custom-850:text-sm">
                 Automate and Optimize Your Schedule
               </h4>
-              <p className="custom-850:text-xs text-sm text-gray-700">
+              <p className="text-sm text-gray-700 custom-850:text-xs">
                 Reclaim.ai is an AI-powered calendar assistant that
                 automatically schedules your tasks, meetings, and breaks to
                 boost productivity. Free to try — earn Flowva Points when you
@@ -172,11 +175,14 @@ export default function RewardJourneyGrid() {
             </div>
           </article>
 
-          <div className="tab-land:flex-col land-phone:flex-row tab-land:gap-3 mt-4 flex items-center justify-between">
-            <a target="blank" href="https://reclaim.ai/?utm_campaign=partnerstack&utm_term=ps_16ee8d9da128&pscd=go.reclaim.ai&ps_partner_key=MTZlZThkOWRhMTI4&ps_xid=XqYacp5z3a5hwi&gsxid=XqYacp5z3a5hwi&gspk=MTZlZThkOWRhMTI4">
+          <div className="mt-4 flex items-center justify-between tab-land:flex-col tab-land:gap-3 land-phone:flex-row">
+            <a
+              target="blank"
+              href="https://reclaim.ai/?utm_campaign=partnerstack&utm_term=ps_16ee8d9da128&pscd=go.reclaim.ai&ps_partner_key=MTZlZThkOWRhMTI4&ps_xid=XqYacp5z3a5hwi&gsxid=XqYacp5z3a5hwi&gspk=MTZlZThkOWRhMTI4"
+            >
               <Button
                 variant="ghost"
-                className="tab-land:w-full rounded-full !bg-secondary-purple !text-white hover:!bg-secondary-purple/90"
+                className="rounded-full !bg-secondary-purple !text-white hover:!bg-secondary-purple/90 tab-land:w-full"
               >
                 <svg
                   aria-hidden="true"
@@ -197,27 +203,8 @@ export default function RewardJourneyGrid() {
               </Button>
             </a>
 
-            <Button
-              variant="ghost"
-              className="tab-land:w-full rounded-full !bg-purple-red-gradient !text-white"
-            >
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="gift"
-                className="svg-inline--fa fa-gift"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M190.5 68.8L225.3 128l-1.3 0-72 0c-22.1 0-40-17.9-40-40s17.9-40 40-40l2.2 0c14.9 0 28.8 7.9 36.3 20.8zM64 88c0 14.4 3.5 28 9.6 40L32 128c-17.7 0-32 14.3-32 32l0 64c0 17.7 14.3 32 32 32l448 0c17.7 0 32-14.3 32-32l0-64c0-17.7-14.3-32-32-32l-41.6 0c6.1-12 9.6-25.6 9.6-40c0-48.6-39.4-88-88-88l-2.2 0c-31.9 0-61.5 16.9-77.7 44.4L256 85.5l-24.1-41C215.7 16.9 186.1 0 154.2 0L152 0C103.4 0 64 39.4 64 88zm336 0c0 22.1-17.9 40-40 40l-72 0-1.3 0 34.8-59.2C329.1 55.9 342.9 48 357.8 48l2.2 0c22.1 0 40 17.9 40 40zM32 288l0 176c0 26.5 21.5 48 48 48l144 0 0-224L32 288zM288 512l144 0c26.5 0 48-21.5 48-48l0-176-192 0 0 224z"
-                ></path>
-              </svg>
-              Claim 50 pts
-            </Button>
+            <ClaimModal />
+            {/* <LevelUpModal /> */}
           </div>
         </article>
       </div>

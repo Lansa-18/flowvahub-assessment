@@ -6,7 +6,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-        screens: {
+      screens: {
         "big-desktop": { max: "87.499em" }, // 1400px
         laptop: { max: "80em" }, // 1280px
         "tab-land": { max: "74.999em" }, // 1200px
@@ -28,12 +28,19 @@ export default {
         "purple-bg1": "#fcf4fc",
         "purple-bg2": "#f4e7ff",
         "purple-bg3": "#faf5ff",
+        "purple-bg4": "#E9D4FF",
         "primary-white": "#f9fafb",
+        "secondary-white": "#EDE9FE",
         "primary-gray": "#e2e8f0",
+        "tertiary-white": "#e9ecef",
+        "accent-white": "#d1d5db",
         "secondary-gray": "#cbd5e0",
         "tertiary-gray": "#d1d5db",
+        "accent-gray": "#6c757d",
         "primary-blue": "#eef2ff",
         "facebook-blue": "rgb(24, 119, 242)",
+        "secondary-black": "#111827",
+        "primary-red": "#FF8687",
       },
 
       backgroundImage: {

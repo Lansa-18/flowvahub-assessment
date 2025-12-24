@@ -25,7 +25,7 @@ export default function ReferSection() {
     <div className="space-y-6">
       <SectionTag title="Refer & Earn" />
 
-      <div className="border border-[#f3f4f6] bg-primary-white hover:-translate-y-[5px] transition-all duration-200">
+      <div className="border border-[#f3f4f6] bg-primary-white transition-all duration-200 hover:-translate-y-[5px]">
         <article className="flex items-center gap-3 rounded-t-2xl bg-primary-blue p-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -34,9 +34,9 @@ export default function ReferSection() {
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
             className="lucide lucide-users h-6 w-6 text-secondary-purple"
           >
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
@@ -72,7 +72,7 @@ export default function ReferSection() {
         </article>
 
         {/* REFERRAL LINK */}
-        <div className="bg-purple-bg3 rounded-t-2xl p-4">
+        <div className="rounded-t-2xl bg-purple-bg3 p-4">
           <p className="mb-2 text-sm text-gray-700">
             Your personal referral link:
           </p>
@@ -90,10 +90,10 @@ export default function ReferSection() {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                className="lucide lucide-copy text-secondary-purple cursor-pointer"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="lucide lucide-copy cursor-pointer text-secondary-purple"
               >
                 <rect width="14" height="14" x="8" y="8" rx="2" ry="2"></rect>
                 <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"></path>
