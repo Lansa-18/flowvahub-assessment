@@ -29,6 +29,8 @@ export default {
         "purple-bg2": "#f4e7ff",
         "purple-bg3": "#faf5ff",
         "purple-bg4": "#E9D4FF",
+        "purple-text": "#6D28D9",
+        "purple-text2": "#A78BFA",
         "primary-white": "#f9fafb",
         "secondary-white": "#EDE9FE",
         "primary-gray": "#e2e8f0",

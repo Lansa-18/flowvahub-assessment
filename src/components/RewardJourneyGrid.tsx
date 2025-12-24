@@ -1,7 +1,6 @@
 import Calendar from "./Calendar";
 import { Button } from "./ui/button";
 import CoinIcon from "./icons/CoinIcon";
-import GiftIcon from "./icons/GiftIcon";
 import { ClaimModal } from "./ClaimModal";
 // import LevelUpModal from "./LevelUpModal";
 

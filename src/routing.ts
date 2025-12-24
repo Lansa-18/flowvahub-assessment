@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter } from "react-router-dom";
 import AppLayout from "./components/ui/AppLayout";
 import NotFound from "./components/ui/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
 import Home from "./pages/Home";
 import Discover from "./pages/Discover";
 import Library from "./pages/Library";
@@ -9,8 +10,18 @@ import Tech from "./pages/Tech";
 import Subscription from "./pages/Subscription";
 import Rewards from "./pages/Rewards";
 import Settings from "./pages/Settings";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
 export const router = createBrowserRouter([
+  {
+    path: "/signup",
+    element: React.createElement(Signup),
+  },
+  {
+    path: "/login",
+    element: React.createElement(Login),
+  },
   {
     path: "/",
     element: React.createElement(AppLayout),
@@ -38,7 +49,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/rewards",
-        element: React.createElement(Rewards),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Rewards),
+        }),
       },
       {
         path: "/settings",
