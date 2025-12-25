@@ -2,14 +2,24 @@ import { useState } from "react";
 import RewardSection from "@/components/RewardSection";
 import EarnSection from "@/components/EarnSection";
 import ReferSection from "@/components/ReferSection";
+import RedeemSection from "@/components/RedeemSection";
 import HamburgerIcon from "@/components/icons/HamburgerIcon";
-import { useNavModalProvider } from "@/context/NavModalContext";
+import { useNavModalContext } from "@/context/NavModalContext";
+import { useGetStreakData } from "@/hooks/useGetStreakData";
+import { useUser } from "@/hooks/useUser";
+import { useGetReedeemableItems } from "@/hooks/useGetRedeemableItems";
+import { useStreakContext } from "@/context/StreakContext";
 
 export default function Rewards() {
   const [activeTab, setActiveTab] = useState<"earn" | "redeem">("earn");
-  const { setIsOpen } = useNavModalProvider();
+  const { setIsOpen } = useNavModalContext();
+  const { user } = useUser();
+  const { redeemableItems, isLoading } = useGetReedeemableItems();
+  const { totalPoints } = useStreakContext();
 
-  const handleToggleNa1vModal = () => {
+  useGetStreakData(user?.id ?? "");
+
+  const handleToggleNavModal = () => {
     setIsOpen((prev) => !prev);
   };
 
@@ -22,7 +32,7 @@ export default function Rewards() {
             <div>
               <h1 className="flex items-center gap-2 text-2xl font-medium">
                 <button
-                  onClick={handleToggleNa1vModal}
+                  onClick={handleToggleNavModal}
                   type="button"
                   aria-label="Hamburger menu"
                   className="hidden custom-1050:block"
@@ -65,7 +75,7 @@ export default function Rewards() {
             className={`relative rounded-t-lg p-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-purple ${
               activeTab === "earn"
                 ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
-                : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
+                : "text-gray-600 hover:bg-tertiary-purple"
             }`}
           >
             Earn Points
@@ -75,7 +85,7 @@ export default function Rewards() {
             className={`relative rounded-t-lg p-3 font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-secondary-purple ${
               activeTab === "redeem"
                 ? "border-b-[3px] border-secondary-purple bg-tertiary-purple text-secondary-purple"
-                : "text-gray-600 hover:bg-tertiary-purple hover:text-gray-900"
+                : "text-gray-600 hover:bg-tertiary-purple"
             }`}
           >
             Redeem Rewards
@@ -94,30 +104,11 @@ export default function Rewards() {
             <ReferSection />
           </>
         ) : (
-          <div className="rounded-xl border border-gray-200 bg-white p-12 text-center">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-gray-100">
-              <svg
-                className="h-8 w-8 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                />
-              </svg>
-            </div>
-            <h3 className="mb-2 text-xl font-semibold text-gray-900">
-              Redeem Rewards Coming Soon
-            </h3>
-            <p className="text-gray-600">
-              Keep earning points! We're preparing exciting rewards for you to
-              redeem.
-            </p>
-          </div>
+          <RedeemSection
+            items={redeemableItems}
+            userPoints={totalPoints}
+            isLoading={isLoading}
+          />
         )}
       </article>
     </section>

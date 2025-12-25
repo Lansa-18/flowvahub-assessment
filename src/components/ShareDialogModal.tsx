@@ -17,7 +17,7 @@ export default function ShareDialogModal() {
           <p className="group-hover:text-white">Share</p>
         </div>
       </DialogTrigger>
-      <DialogContent className="flex flex-col items-center justify-center w-[28%]">
+      <DialogContent className="flex w-[90%] max-w-sm flex-col items-center justify-center">
         <DialogHeader>
           <DialogTitle className="text-center text-2xl font-bold text-black">
             Share Your Stack
@@ -25,10 +25,10 @@ export default function ShareDialogModal() {
         </DialogHeader>
 
         {/* ACTUAL CONTENT */}
-        <div className="bg-purple-bg4 flex h-[40px] w-[40px] items-center justify-center rounded-full text-[1rem] text-secondary-purple">
+        <div className="flex h-[40px] w-[40px] items-center justify-center rounded-full bg-purple-bg4 text-[1rem] text-secondary-purple">
           <StackIcon />
         </div>
-        <p className="text-gray-600 text-center">
+        <p className="text-center text-gray-600">
           You have no stack created yet, go to Tech Stack to create one.
         </p>
       </DialogContent>

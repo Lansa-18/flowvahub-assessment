@@ -3,15 +3,18 @@ import { router } from "./routing";
 import { NavModalProvider } from "./context/NavModalContext";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
+import { StreakProvider } from "./context/StreakContext";
 
 const queryClient = new QueryClient();
 
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <NavModalProvider>
-        <RouterProvider router={router} />
-      </NavModalProvider>
+      <StreakProvider>
+        <NavModalProvider>
+          <RouterProvider router={router} />
+        </NavModalProvider>
+      </StreakProvider>
 
       <Toaster
         position="top-center"

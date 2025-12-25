@@ -26,7 +26,7 @@ export function ClaimModal() {
           Claim 50 pts
         </Button>
       </DialogTrigger>
-      <DialogContent className="min-w-[33rem] max-w-[35%]">
+      <DialogContent className="w-[90%] max-w-lg">
         <DialogHeader>
           <DialogTitle className="text-lg font-bold">
             Claim Your 25 Points

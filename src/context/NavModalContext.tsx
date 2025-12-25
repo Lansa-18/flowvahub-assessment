@@ -23,7 +23,7 @@ function NavModalProvider({ children }: NavModalProviderProps) {
   );
 }
 
-function useNavModalProvider() {
+function useNavModalContext() {
   const context = useContext(NavModalContext);
 
   if (context == undefined)
@@ -32,4 +32,4 @@ function useNavModalProvider() {
   return context;
 }
 
-export { NavModalProvider, useNavModalProvider };
+export { NavModalProvider, useNavModalContext};

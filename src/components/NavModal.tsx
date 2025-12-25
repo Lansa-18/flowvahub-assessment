@@ -1,9 +1,9 @@
-import { useNavModalProvider } from "@/context/NavModalContext";
+import { useNavModalContext } from "@/context/NavModalContext";
 import CloseIcon from "./icons/CloseIcon";
 import Sidebar from "./ui/Sidebar";
 
 export default function NavModal() {
-  const { setIsOpen } = useNavModalProvider();
+  const { setIsOpen } = useNavModalContext();
 
   return (
     <article className="fixed inset-0 z-50">

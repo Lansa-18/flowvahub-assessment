@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { useNavModalProvider } from "@/context/NavModalContext";
+import { useNavModalContext } from "@/context/NavModalContext";
 import NavModal from "../NavModal";
 
 export default function AppLayout() {
-  const { isOpen } = useNavModalProvider();
+  const { isOpen } = useNavModalContext();
 
   return (
     <div className="flex h-screen overflow-hidden">

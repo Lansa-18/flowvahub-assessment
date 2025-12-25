@@ -1,25 +1,13 @@
-import GiftIcon from "./icons/GiftIcon";
-import { Button } from "./ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "./ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "./ui/dialog";
 
-export default function LevelUpModal() {
+interface LevelUpModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function LevelUpModal({ isOpen, onClose }: LevelUpModalProps) {
   return (
-    <Dialog>
-      <DialogTrigger asChild>
-        <Button
-          variant="ghost"
-          className="rounded-full !bg-purple-red-gradient !text-white tab-land:w-full"
-        >
-          <GiftIcon />
-          Claim 50 pts
-        </Button>
-      </DialogTrigger>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="flex w-[90%] max-w-sm flex-col items-center justify-center px-8">
         <DialogHeader>
           <DialogTitle className="flex flex-col items-center">
@@ -37,12 +25,12 @@ export default function LevelUpModal() {
                 <polyline points="22 4 12 14.01 9 11.01"></polyline>
               </svg>
             </div>
-            <h2 className="mb-[10px] text-center text-[24px] font-bold text-secondary-purple">
+            <p className="mb-[10px] text-center text-[24px] font-bold text-secondary-purple">
               Level Up! 🎉
-            </h2>
-            <h3 className="my-5 bg-gradient-to-br from-secondary-purple to-[#FF9FF5] bg-clip-text text-center text-[36px] font-extrabold text-transparent [text-shadow:1px_1px_3px_rgba(0,0,0,0.1)]">
+            </p>
+            <p className="my-5 bg-gradient-to-br from-secondary-purple to-[#FF9FF5] bg-clip-text text-center text-[36px] font-extrabold text-transparent [text-shadow:1px_1px_3px_rgba(0,0,0,0.1)]">
               +5 Points
-            </h3>
+            </p>
             <div className="mb-1 flex justify-center space-x-1">
               <span className="animate-bounce">✨</span>
               <span className="animate-bounce">💎</span>
