@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext } from "react";
 import { useGetStreakData } from "@/hooks/useGetStreakData";
 import { useUser } from "@/hooks/useUser";
 import { isSameDay } from "date-fns";
