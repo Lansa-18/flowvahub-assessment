@@ -51,6 +51,21 @@ export async function getCurrentUser() {
   return data?.user;
 }
 
+export async function signInWithGoogle() {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: `${window.location.origin}/rewards`,
+    },
+  });
+
+  if (error) throw new Error(error.message);
+
+  // This won't log user data - it logs the redirect URL
+  // The actual redirect happens immediately after this
+  return data;
+}
+
 export async function logoutApi() {
   const { error } = await supabase.auth.signOut();
 

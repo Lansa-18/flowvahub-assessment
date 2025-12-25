@@ -29,23 +29,33 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: React.createElement(Home),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Home),
+        }),
       },
       {
         path: "/discover",
-        element: React.createElement(Discover),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Discover),
+        }),
       },
       {
         path: "/library",
-        element: React.createElement(Library),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Library),
+        }),
       },
       {
         path: "/tech",
-        element: React.createElement(Tech),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Tech),
+        }),
       },
       {
         path: "/subscriptions",
-        element: React.createElement(Subscription),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Subscription),
+        }),
       },
       {
         path: "/rewards",
@@ -55,7 +65,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "/settings",
-        element: React.createElement(Settings),
+        element: React.createElement(ProtectedRoute, {
+          children: React.createElement(Settings),
+        }),
       },
     ],
   },

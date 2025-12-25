@@ -20,7 +20,7 @@ export default function LevelUpModal() {
           Claim 50 pts
         </Button>
       </DialogTrigger>
-      <DialogContent className="flex w-[28%] flex-col items-center justify-center">
+      <DialogContent className="flex w-[90%] max-w-sm flex-col items-center justify-center px-8">
         <DialogHeader>
           <DialogTitle className="flex flex-col items-center">
             <div className="mb-2 h-[98px] w-[98px] text-green-500">
@@ -40,9 +40,17 @@ export default function LevelUpModal() {
             <h2 className="mb-[10px] text-center text-[24px] font-bold text-secondary-purple">
               Level Up! 🎉
             </h2>
-            <h3 className="my-3 bg-gradient-to-br from-secondary-purple to-[#FF9FF5] bg-clip-text text-center text-[36px] font-extrabold text-transparent [text-shadow:1px_1px_3px_rgba(0,0,0,0.1)]">
+            <h3 className="my-5 bg-gradient-to-br from-secondary-purple to-[#FF9FF5] bg-clip-text text-center text-[36px] font-extrabold text-transparent [text-shadow:1px_1px_3px_rgba(0,0,0,0.1)]">
               +5 Points
             </h3>
+            <div className="mb-1 flex justify-center space-x-1">
+              <span className="animate-bounce">✨</span>
+              <span className="animate-bounce">💎</span>
+              <span className="animate-bounce">🎯</span>
+            </div>
+            <p className="mb-[25px] text-center text-[15px] leading-[1.6] text-gray-500">
+              You've claimed your daily points! Come back tomorrow for more!
+            </p>
           </DialogTitle>
         </DialogHeader>
 

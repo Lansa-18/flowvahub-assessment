@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { useLogin } from "@/hooks/useLogin";
+import { signInWithGoogle } from "@/lib/utils/apiAuth";
 
 const loginSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -40,16 +41,18 @@ export default function Login() {
   const onSubmit = (data: LoginFormValues) => {
     console.log("Form data:", data);
 
-    // Handle login logic here
     login(
       { email: data.email, password: data.password },
       { onSettled: () => form.reset() },
     );
   };
 
-  const handleGoogleSignIn = () => {
-    // Handle Google sign-in logic
-    console.log("Google sign in");
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      console.error("Google sign-in error:", error);
+    }
   };
 
   return (

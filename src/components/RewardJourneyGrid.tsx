@@ -2,7 +2,6 @@ import Calendar from "./Calendar";
 import { Button } from "./ui/button";
 import CoinIcon from "./icons/CoinIcon";
 import { ClaimModal } from "./ClaimModal";
-// import LevelUpModal from "./LevelUpModal";
 
 export default function RewardJourneyGrid() {
   return (
@@ -203,7 +202,6 @@ export default function RewardJourneyGrid() {
             </a>
 
             <ClaimModal />
-            {/* <LevelUpModal /> */}
           </div>
         </article>
       </div>

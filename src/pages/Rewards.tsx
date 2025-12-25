@@ -25,7 +25,7 @@ export default function Rewards() {
                   onClick={handleToggleNa1vModal}
                   type="button"
                   aria-label="Hamburger menu"
-                  className="custom-1050:block hidden"
+                  className="hidden custom-1050:block"
                 >
                   <HamburgerIcon />
                 </button>
