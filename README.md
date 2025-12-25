@@ -1,73 +1,128 @@
-# React + TypeScript + Vite
+# Flowva Hub 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Flowva Hub is a sophisticated tool discovery and reward management platform designed for modern developers and tech enthusiasts. Built with a high-performance **TypeScript** and **React** stack, the application enables users to manage their software subscriptions, build custom tech stacks, and participate in a gamified reward ecosystem.
 
-Currently, two official plugins are available:
+The project integrates **Supabase** for real-time authentication and database management, utilizing **TanStack Query** for robust server-state synchronization. The interface is meticulously crafted with **Tailwind CSS** and **Radix UI** primitives to ensure a responsive, accessible, and premium user experience.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- **Gamified Rewards System**: A daily streak mechanism that encourages user retention through point accumulation.
+- **Secure Authentication**: Robust user onboarding and session management via Supabase Auth (Email & Google).
+- **Tech Stack Management**: Tools for users to organize, visualize, and share their professional software stacks.
+- **Dynamic Reward Redemption**: A filtered marketplace for unlocking digital rewards based on user point balances.
+- **Responsive Dashboard**: A mobile-first layout featuring custom sidebar navigation and modal-driven interactions.
+- **Performance Optimized**: Lazy loading and code splitting implemented via React Suspense to ensure minimal initial bundle sizes.
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| Technology | Purpose |
+| :--- | :--- |
+| [React 19](https://react.dev/) | UI Library & Component Architecture |
+| [TypeScript](https://www.typescriptlang.org/) | Type Safety & Developer Experience |
+| [Vite](https://vitejs.dev/) | Next-generation Frontend Tooling |
+| [Supabase](https://supabase.com/) | Backend-as-a-Service (Auth & DB) |
+| [TanStack Query](https://tanstack.com/query/latest) | Asynchronous State Management |
+| [Tailwind CSS](https://tailwindcss.com/) | Utility-first Styling Framework |
+| [Radix UI](https://www.radix-ui.com/) | Unstyled, Accessible UI Components |
+| [React Hook Form](https://react-hook-form.com/) | High-performance Form Validation |
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Follow these steps to set up the development environment on your local machine:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/Lansa-18/flowvahub-assessment.git
+    cd flowvahub-assessment
+    ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
+
+3.  **Configure Environment Variables**
+    Create a `.env` file in the root directory and add your Supabase credentials:
+    ```env
+    VITE_SUPABASE_URL=your_supabase_project_url
+    VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+    ```
+
+4.  **Start the Development Server**
+    ```bash
+    npm run dev
+    ```
+
+## Usage
+
+### User Authentication
+Users can register via the `/signup` route or sign in through the `/login` page. The application supports both standard email/password combinations and Google OAuth providers. Authentication state is persisted across sessions using the `useUser` hook.
+
+### Earning Points
+Once logged in, navigate to the **Rewards Hub**. 
+- Click **"Claim Today's Point"** to increment your daily streak. 
+- The system prevents double-claiming by checking the `last_claimed_at` timestamp against the current server time.
+
+### Managing the Tech Stack
+The **Tech Stack** section allows users to curate a list of tools. This data is managed through the `NavModalContext` and can be shared with the community via the **Share Your Stack** feature, which generates a unique referral link.
+
+### Redeeming Rewards
+The **Redeem Rewards** tab displays various items (Gift Cards, Courses, etc.). The UI dynamically calculates if a user has sufficient points to unlock an item, changing the button state from "Locked" to "Claimable" based on real-time point balances.
+
+## API Documentation
+
+### Base URL
+The application interacts with the Supabase API Gateway.
+
+### Endpoints
+
+#### POST /auth/v1/signup
+**Request**:
+```json
+{
+  "email": "user@example.com",
+  "password": "securePassword123"
+}
+```
+**Response**:
+Returns a user object and session JWT.
+
+#### GET /rest/v1/streaks
+**Request**:
+Requires `Authorization: Bearer <JWT>` and a query filter for `user_id`.
+
+**Response**:
+```json
+{
+  "user_id": "uuid",
+  "total_points": 150,
+  "current_streak": 5,
+  "last_claimed_at": "2023-10-27T10:00:00Z"
+}
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+#### POST /rest/v1/rpc/claim_daily_points
+**Request**:
+Internal RPC call triggered by the `useClaimDailyPoints` mutation.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Errors**:
+- 400: "Already claimed today"
+- 401: "Unauthorized access"
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Author Info
+**Project Lead**
+- GitHub: [Lansa-18](https://github.com/Lansa-18)
+- LinkedIn: [Your Name]
+- Twitter: [@your_handle]
+- Portfolio: [your-portfolio.com]
+
+---
+
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
+
+[![Readme was generated by Dokugen](https://img.shields.io/badge/Readme%20was%20generated%20by-Dokugen-brightgreen)](https://www.npmjs.com/package/dokugen)

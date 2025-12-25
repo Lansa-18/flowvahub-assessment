@@ -14,6 +14,7 @@ export async function signupApi({ email, password }: credentials) {
     email,
     password,
     options: {
+      emailRedirectTo: `${window.location.origin}/login`,
       data: {
         userName: "Guest User",
         avatar: avatarstring,
@@ -55,14 +56,12 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${window.location.origin}/rewards`,
+      redirectTo: 'https://flowvahub-assessment-vite.vercel.app/auth/callback',
     },
   });
 
   if (error) throw new Error(error.message);
 
-  // This won't log user data - it logs the redirect URL
-  // The actual redirect happens immediately after this
   return data;
 }
 
