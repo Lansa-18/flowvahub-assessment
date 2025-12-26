@@ -4,7 +4,6 @@ import {
   DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -27,12 +26,12 @@ export function ClaimModal() {
         </Button>
       </DialogTrigger>
       <DialogContent className="w-[90%] max-w-lg">
-        <DialogHeader>
+        <DialogHeader className="text-left">
           <DialogTitle className="text-lg font-bold">
             Claim Your 25 Points
           </DialogTitle>
           <DialogDescription>
-            <div className="text-accent-gray space-y-1 text-[.9rem]">
+            <div className="space-y-1 text-[.9rem] text-accent-gray">
               <p>
                 Sign up for Reclaim (free, no payment needed), then fill the
                 form below:
@@ -52,27 +51,27 @@ export function ClaimModal() {
           <div className="space-y-2">
             <Label
               htmlFor="email"
-              className="text-secondary-black text-right text-sm opacity-80"
+              className="text-right text-sm text-secondary-black opacity-80"
             >
               Email used on Reclaim
             </Label>
             <Input
               id="email"
               placeholder="user@example.com"
-              className="border-secondary-white rounded-md border px-[14px] py-[20px] outline-none focus:border-secondary-purple"
+              className="rounded-md border border-secondary-white px-[14px] py-[20px] outline-none focus:border-secondary-purple"
             />
           </div>
 
           <div className="space-y-2">
             <Label
               htmlFor="file"
-              className="text-secondary-black text-right text-sm opacity-80"
+              className="text-right text-sm text-secondary-black opacity-80"
             >
               Upload screenshot (mandatory)
             </Label>
             <label
               htmlFor="file"
-              className="border-tertiary-white flex cursor-pointer items-center justify-center gap-2 rounded-md border bg-gray-50 px-4 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-100"
+              className="flex cursor-pointer items-center justify-center gap-2 rounded-md border border-tertiary-white bg-gray-50 px-4 py-2 text-sm text-gray-600 transition-colors hover:bg-gray-100"
             >
               <ChooseFileIcon />
               Choose file
@@ -80,19 +79,20 @@ export function ClaimModal() {
             <Input id="file" type="file" className="hidden" />
           </div>
         </article>
-        <DialogFooter className="">
-          <DialogClose asChild>
-            <Button className="bg-tertiary-white hover:bg-accent-white font-semibold text-black transition-all duration-200">
-              Cancel
+
+        <article className="flex justify-end gap-4 ">
+            <DialogClose asChild>
+              <Button className="bg-tertiary-white font-semibold text-black transition-all duration-200 hover:bg-accent-white">
+                Cancel
+              </Button>
+            </DialogClose>
+            <Button
+              className="bg-secondary-purple font-bold text-white transition-all duration-200 hover:bg-primary-red"
+              type="submit"
+            >
+              Submit Claim
             </Button>
-          </DialogClose>
-          <Button
-            className="hover:bg-primary-red transition-all font-bold bg-secondary-purple text-white duration-200"
-            type="submit"
-          >
-            Submit Claim
-          </Button>
-        </DialogFooter>
+        </article>
       </DialogContent>
     </Dialog>
   );

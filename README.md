@@ -114,9 +114,9 @@ Internal RPC call triggered by the `useClaimDailyPoints` mutation.
 ## Author Info
 **Project Lead**
 - GitHub: [Lansa-18](https://github.com/Lansa-18)
-- LinkedIn: [Your Name]
-- Twitter: [@your_handle]
-- Portfolio: [your-portfolio.com]
+- LinkedIn: [Mapelujo Abdulkareem](https://linkedin.com/in/lancer18)
+- Twitter: [@Lansa_18](https://x.com/Lansa_18)
+- Portfolio: [lansa.dev](https://lansa.dev)
 
 ---
 

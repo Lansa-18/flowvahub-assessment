@@ -16,6 +16,7 @@ export default {
         "custom-850": { max: "53.124em" }, // 850px
         "land-phone": { max: "47.999em" }, // 768px
         "custom-680": { max: "42.499em" }, // 680px
+        "custom-640": { max: "40em" }, // 640px
         phone: { max: "35.999em" }, // 576px
         "custom-540": { max: "33.749em" }, // 540px
         "custom-390": { max: "24.374em" }, // 390px
