@@ -56,7 +56,7 @@ export async function signInWithGoogle() {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: 'https://flowvahub-assessment-vite.vercel.app/**',
+      redirectTo: "https://flowvahub-assessment-vite.vercel.app/",
     },
   });
 
