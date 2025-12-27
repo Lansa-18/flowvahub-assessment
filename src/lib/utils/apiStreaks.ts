@@ -32,14 +32,41 @@ export async function claimDailyPoints(userId: string) {
   const newPoints = (streak?.total_points || 0) + 5;
   const longestStreak = Math.max(newStreak, streak?.longest_streak || 0);
 
-  await supabase.from("streaks").upsert({
-    user_id: userId,
-    current_streak: newStreak,
-    longest_streak: longestStreak,
-    total_points: newPoints,
-    last_claimed_at: today.toISOString(),
-    updated_at: today.toISOString(),
-  });
+  let error;
+  
+  if (streak) {
+    // Update existing streak record
+    const result = await supabase
+      .from("streaks")
+      .update({
+        current_streak: newStreak,
+        longest_streak: longestStreak,
+        total_points: newPoints,
+        last_claimed_at: today.toISOString(),
+        updated_at: today.toISOString(),
+      })
+      .eq("user_id", userId);
+    error = result.error;
+  } else {
+    // Insert new streak record for first-time claim
+    const result = await supabase
+      .from("streaks")
+      .insert({
+        user_id: userId,
+        current_streak: newStreak,
+        longest_streak: longestStreak,
+        total_points: newPoints,
+        last_claimed_at: today.toISOString(),
+        created_at: today.toISOString(),
+        updated_at: today.toISOString(),
+      });
+    error = result.error;
+  }
+
+  if (error) {
+    console.error("Error claiming daily points:", error);
+    throw new Error("Failed to claim daily points");
+  }
 
   return { newStreak, newPoints };
 }
