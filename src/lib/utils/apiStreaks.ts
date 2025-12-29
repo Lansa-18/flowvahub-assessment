@@ -1,6 +1,6 @@
 import { supabase } from "./supabase";
 import type { Streak } from "./types";
-import { isSameDay, isYesterday } from "date-fns";
+import { isSameDay, startOfDay, differenceInDays } from "date-fns";
 
 export async function claimDailyPoints(userId: string) {
   // Get the user's streak record.
@@ -20,11 +20,23 @@ export async function claimDailyPoints(userId: string) {
     throw new Error("Already claimed today!");
   }
 
-  // Calculate the new streak
+  // Calculate the new streak using day difference for more reliable comparison
   let newStreak = 0;
-  if (lastClaimed && isYesterday(lastClaimed)) {
-    newStreak = (streak?.current_streak || 0) + 1;
+  if (lastClaimed) {
+    const daysDifference = differenceInDays(
+      startOfDay(today),
+      startOfDay(lastClaimed),
+    );
+
+    if (daysDifference === 1) {
+      // Claimed yesterday, continue streak
+      newStreak = (streak?.current_streak || 0) + 1;
+    } else {
+      // Streak broken, reset to 1
+      newStreak = 1;
+    }
   } else {
+    // First time claiming
     newStreak = 1;
   }
 
@@ -33,7 +45,7 @@ export async function claimDailyPoints(userId: string) {
   const longestStreak = Math.max(newStreak, streak?.longest_streak || 0);
 
   let error;
-  
+
   if (streak) {
     // Update existing streak record
     const result = await supabase
@@ -49,17 +61,15 @@ export async function claimDailyPoints(userId: string) {
     error = result.error;
   } else {
     // Insert new streak record for first-time claim
-    const result = await supabase
-      .from("streaks")
-      .insert({
-        user_id: userId,
-        current_streak: newStreak,
-        longest_streak: longestStreak,
-        total_points: newPoints,
-        last_claimed_at: today.toISOString(),
-        created_at: today.toISOString(),
-        updated_at: today.toISOString(),
-      });
+    const result = await supabase.from("streaks").insert({
+      user_id: userId,
+      current_streak: newStreak,
+      longest_streak: longestStreak,
+      total_points: newPoints,
+      last_claimed_at: today.toISOString(),
+      created_at: today.toISOString(),
+      updated_at: today.toISOString(),
+    });
     error = result.error;
   }
 

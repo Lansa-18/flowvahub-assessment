@@ -21,7 +21,7 @@ function StreakProvider({ children }: StreakProviderProps) {
 
   // Derive values from streakData
   const totalPoints = streakData?.total_points ?? 0;
-  const daysCount = streakData?.current_streak ?? 0;
+  const daysCount = streakData?.longest_streak ?? 0;
 
   // Check if user has claimed today
   const hasClaimed = streakData?.last_claimed_at

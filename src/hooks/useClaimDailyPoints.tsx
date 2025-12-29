@@ -7,9 +7,7 @@ export function useClaimDailyPoints(onSuccessCallback?: () => void) {
     mutationFn: claimDailyPoints,
 
     onSuccess: () => {
-      // Invalidate and refetch streak data
-      queryClient.invalidateQueries({ queryKey: ["streaks"] });
-      // Trigger callback (to show modal)
+      queryClient.invalidateQueries({ queryKey: ["streaks"], exact: false });
       onSuccessCallback?.();
     },
   });
