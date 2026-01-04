@@ -7,7 +7,7 @@ export function useClaimDailyPoints(onSuccessCallback?: () => void) {
     mutationFn: claimDailyPoints,
 
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["streaks"], exact: false });
+      queryClient.invalidateQueries({ queryKey: ["streaks", "userId"] });
       onSuccessCallback?.();
     },
   });

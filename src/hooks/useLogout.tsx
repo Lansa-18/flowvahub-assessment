@@ -10,7 +10,8 @@ export function useLogout() {
     mutationFn: logoutApi,
 
     onSuccess: () => {
-      queryClient.removeQueries();
+      // Clear all cached queries on logout
+      queryClient.clear();
       navigate("/login", { replace: true });
     },
   });

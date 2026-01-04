@@ -3,12 +3,17 @@ import type { Streak } from "./types";
 import { isSameDay, startOfDay, differenceInDays } from "date-fns";
 
 export async function claimDailyPoints(userId: string) {
-  // Get the user's streak record.
-  const { data: streak }: { data: Streak | null } = await supabase
+  // Get the user's streak record - use maybeSingle to handle case when no record exists
+  const { data: streak, error: fetchError } = await supabase
     .from("streaks")
     .select("*")
     .eq("user_id", userId)
-    .single();
+    .maybeSingle();
+
+  if (fetchError) {
+    console.error("Error fetching streak:", fetchError);
+    throw new Error("Failed to fetch streak data");
+  }
 
   const today = new Date();
   const lastClaimed = streak?.last_claimed_at
@@ -28,6 +33,15 @@ export async function claimDailyPoints(userId: string) {
       startOfDay(lastClaimed),
     );
 
+    console.log("Streak Debug:", {
+      today: today.toISOString(),
+      lastClaimed: lastClaimed.toISOString(),
+      todayStartOfDay: startOfDay(today).toISOString(),
+      lastClaimedStartOfDay: startOfDay(lastClaimed).toISOString(),
+      daysDifference,
+      currentStreak: streak?.current_streak,
+    });
+
     if (daysDifference === 1) {
       // Claimed yesterday, continue streak
       newStreak = (streak?.current_streak || 0) + 1;
@@ -39,6 +53,8 @@ export async function claimDailyPoints(userId: string) {
     // First time claiming
     newStreak = 1;
   }
+
+  console.log("New streak will be:", newStreak);
 
   // Update the database
   const newPoints = (streak?.total_points || 0) + 5;
